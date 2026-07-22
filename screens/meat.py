@@ -1,6 +1,5 @@
-def play(screen, bg_supermarket, sprites, font, level):
-    screen.blit(bg_supermarket, (0, 0))
-    sprites.draw(screen)
+def meatAisle(screen, bg_meat, font, pos, click):
+    screen.blit(bg_meat, (0, 0))
 
     text = font.render("Press ESC to leave", True, (255, 255, 255))
     
