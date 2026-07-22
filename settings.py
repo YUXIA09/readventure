@@ -4,7 +4,9 @@ HEIGHT = 600
 FPS = 60
 SPEED = 2
 
+shopping_cart = []
+
 supermarket_level = 1
 resetPos = False
-state = "supermarket-screen"
+state = "bread-aisle"
 running = True

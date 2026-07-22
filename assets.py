@@ -29,8 +29,8 @@ bg_meat = pygame.transform.scale(bg_meat, (WIDTH, HEIGHT))
 bg_vegetables = pygame.image.load("assets/background_vegetables.png").convert()
 bg_vegetables = pygame.transform.scale(bg_vegetables, (WIDTH, HEIGHT))
 
-character_1 = pygame.image.load("assets/character_1.png").convert_alpha()
-character_1 = pygame.transform.scale(character_1, (20, 50))
+character_1 = pygame.image.load("assets/character_1.gif").convert_alpha()
+character_1 = pygame.transform.scale(character_1, (30, 75))
 
-character_2 = pygame.image.load("assets/character_2.png").convert_alpha()
-character_2 = pygame.transform.scale(character_2, (20, 50))
+character_2 = pygame.image.load("assets/character_2.gif").convert_alpha()
+character_2 = pygame.transform.scale(character_2, (30, 75))

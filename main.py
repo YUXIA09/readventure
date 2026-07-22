@@ -19,9 +19,11 @@ from screens.fruit import fruitAisle
 from screens.meat import meatAisle
 from screens.vegetables import vegetablesAisle
 
+
 clock = pygame.time.Clock()
 
 font = pygame.font.Font(None, 36)
+itemFont = pygame.font.Font(None, 18)
 
 mainPlayer = Player(character_1, character_2, 225, 135)
 sprites = pygame.sprite.Group()
@@ -35,7 +37,7 @@ def check_click(events):
 
     return click
 
-def exit(state, events):
+def exitAisles(state, events):
     for event in events:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
@@ -86,6 +88,19 @@ while running:
         feet = (mainPlayer.rect.centerx, mainPlayer.rect.bottom - 20)
         play(screen, bg_supermarket, sprites, font, supermarket_level)
 
+        pygame.draw.rect(screen, (255,255,255), cartList)
+
+        cart = "Cart\n"
+        for item in shopping_cart:
+            cart += item 
+            cart += "\n"
+        text = itemFont.render(cart, True, (0, 0, 0))
+        
+        text_rect = text.get_rect(topleft=cartList.topleft)
+
+        screen.blit(text, text_rect)
+        
+
         if dairy.collidepoint(feet):
             state = "dairy-aisle"
 
@@ -111,25 +126,26 @@ while running:
                     resetPos = False
 
     if state == "dairy-aisle":
-        dairyAisle(screen, bg_dairy, font, pygame.mouse.get_pos(), check_click(events))
-        state, resetPos = exit(state, events)
+        addeditems = dairyAisle(screen, bg_dairy, font, pygame.mouse.get_pos(), check_click(events))
+        shopping_cart.extend(addeditems)
+        state, resetPos = exitAisles(state, events)
 
     if state == "bread-aisle":
         breadAisle(screen, bg_bread, font, pygame.mouse.get_pos(), check_click(events))
-        state, resetPos = exit(state, events)
+        state, resetPos = exitAisles(state, events)
 
     if state == "fruit-aisle":
         fruitAisle(screen, bg_fruit, font, pygame.mouse.get_pos(), check_click(events))
-        state, resetPos = exit(state, events)
+        state, resetPos = exitAisles(state, events)
 
     if state == "cleaning-aisle":
         cleaningAisle(screen, bg_cleaning, font, pygame.mouse.get_pos(), check_click(events))
-        state, resetPos = exit(state, events)
+        state, resetPos = exitAisles(state, events)
 
     if state == "vegetables-aisle":
         vegetablesAisle(screen, bg_vegetables, font, pygame.mouse.get_pos(), check_click(events))
-        state, resetPos = exit(state, events)
+        state, resetPos = exitAisles(state, events)
 
     if state == "meat-aisle":
         meatAisle(screen, bg_meat, font, pygame.mouse.get_pos(), check_click(events))
-        state, resetPos = exit(state, events)
+        state, resetPos = exitAisles(state, events)
