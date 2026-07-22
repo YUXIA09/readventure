@@ -10,3 +10,4 @@ supermarket_level = 1
 resetPos = False
 state = "bread-aisle"
 running = True
+movedInitial = False

@@ -63,12 +63,20 @@ while running:
             mainPlayer.rect.x = 225
             mainPlayer.rect.y = 135
             resetPos = True
-        
+
         game(screen, bg_main, sprites)
 
-        mainPlayer.rect.clamp_ip(screen.get_rect())
         keys = pygame.key.get_pressed()
-        mainPlayer.move(keys)
+        moved = mainPlayer.move(keys)
+        mainPlayer.rect.clamp_ip(screen.get_rect())
+        
+        if moved:
+            movedInitial =True
+
+        if not movedInitial:
+            textMove = font.render("Use arrow keys to move", True, (255, 255, 255))
+            textMove_rect = textMove.get_rect()
+            screen.blit(textMove, textMove_rect)
 
         if mainPlayer.rect.colliderect(supermarket):
             state = "supermarket-screen"
@@ -94,13 +102,11 @@ while running:
         for item in shopping_cart:
             cart += item 
             cart += "\n"
-        text = itemFont.render(cart, True, (0, 0, 0))
-        
-        text_rect = text.get_rect(topleft=cartList.topleft)
 
+        text = itemFont.render(cart, True, (0, 0, 0))
+        text_rect = text.get_rect(topleft=cartList.topleft)
         screen.blit(text, text_rect)
         
-
         if dairy.collidepoint(feet):
             state = "dairy-aisle"
 

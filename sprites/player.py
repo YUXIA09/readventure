@@ -48,6 +48,8 @@ class Player(pygame.sprite.Sprite):
         if moved:
             self.swap_image()
 
+        return moved
+
     def swap_image(self):
         #Thank you Max for this idea, this makes the movement more natural.
         if self.count > 12:
