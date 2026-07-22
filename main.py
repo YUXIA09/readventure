@@ -15,7 +15,7 @@ from screens.supermarket import play
 clock = pygame.time.Clock()
 running = True
 
-state = "supermarket-screen"
+state = "welcome-screen"
 font = pygame.font.Font(None, 36)
 
 mainPlayer = Player(character_1, character_2, 225, 135)
@@ -58,7 +58,7 @@ while running:
         play(screen, bg_supermarket, sprites, supermarket_level)
 
         supermarket = pygame.Rect(320, 100, 110, 70)
-        supermarketBounds = pygame.Rect(217, 100, 565, 465)
+        supermarketBounds = pygame.Rect(185, 100, 600, 470)
 
         keys = pygame.key.get_pressed()
         mainPlayer.move(keys)
