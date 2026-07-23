@@ -29,6 +29,12 @@ bg_meat = pygame.transform.scale(bg_meat, (WIDTH, HEIGHT))
 bg_vegetables = pygame.image.load("assets/background_vegetables.png").convert()
 bg_vegetables = pygame.transform.scale(bg_vegetables, (WIDTH, HEIGHT))
 
+supermarket_complete_popup = pygame.image.load("assets/supermarket_complete.png").convert()
+supermarket_complete_popup = pygame.transform.scale(supermarket_complete_popup, (200, 160))
+
+supermarket_failure_popup = pygame.image.load("assets/supermarket_failure.png").convert()
+supermarket_failure_popup = pygame.transform.scale(supermarket_failure_popup, (200, 160))
+
 character_1 = pygame.image.load("assets/character_1.gif").convert_alpha()
 character_1 = pygame.transform.scale(character_1, (30, 75))
 

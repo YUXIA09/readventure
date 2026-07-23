@@ -1,11 +1,9 @@
 from rects import dairyAisleItems
 
-
-
 def dairyAisle(screen, bg_dairy, font, pos, click):
     screen.blit(bg_dairy, (0, 0))
 
-    text = font.render("Press ESC to leave", True, (255, 255, 255))
+    text = font.render("Press ESC to leave. Click on items to add them to your cart", True, (255, 255, 255))
     
     text_rect = text.get_rect()
     screen.blit(text, text_rect)
@@ -14,7 +12,7 @@ def dairyAisle(screen, bg_dairy, font, pos, click):
     if click:
         for key, value in dairyAisleItems.items():
             if value.collidepoint(pos):
-                added_items.append(f"{key}".split('=')[0]) 
+                added_items.append(key) 
 
     return added_items
             

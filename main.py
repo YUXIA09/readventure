@@ -9,9 +9,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 from assets import *
 from rects import *
 from sprites.player import Player
+from sprites.popups import popup
 from screens.welcome import welcome
 from screens.game import game
-from screens.supermarket import play
+from screens.supermarket import *
 from screens.dairy import dairyAisle
 from screens.bread import breadAisle
 from screens.cleaning import cleaningAisle
@@ -22,12 +23,15 @@ from screens.vegetables import vegetablesAisle
 
 clock = pygame.time.Clock()
 
-font = pygame.font.Font(None, 36)
+font = pygame.font.Font(None, 30)
 itemFont = pygame.font.Font(None, 18)
 
 mainPlayer = Player(character_1, character_2, 225, 135)
 sprites = pygame.sprite.Group()
 sprites.add(mainPlayer)
+
+complete_popup = popup(supermarket_complete_popup)
+failure_popup = popup(supermarket_failure_popup)
 
 def check_click(events):
     click = False
@@ -44,6 +48,14 @@ def exitAisles(state, events):
                 return "supermarket-screen", False
 
     return state, True
+
+def waitForSpace():
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    waiting = False
 
 while running:
     pygame.display.flip()
@@ -98,12 +110,52 @@ while running:
 
         pygame.draw.rect(screen, (255,255,255), cartList)
 
-        cart = "Cart\n"
+        cart = "Shopping Cart:\n"
         for item in shopping_cart:
             cart += item 
             cart += "\n"
 
-        text = itemFont.render(cart, True, (0, 0, 0))
+        if cashierRect.collidepoint(mainPlayer.rect.center):
+            text = font.render("Click on Cashier to Checkout", True, (255, 255, 255))
+            text_rect = text.get_rect(topleft=cashierRect.topleft)
+            screen.blit(text, text_rect)
+
+            if cashierRect.collidepoint(pygame.mouse.get_pos()) and check_click(events):
+                if check_items(shopping_cart):
+                    print("You Win!")
+
+                    complete_popup.visible = True
+                    complete_popup.draw(screen)
+                    pygame.display.flip()
+
+                    if supermarket_level == 3:
+                        print("You have completed all levels!")
+                        supermarket_level = 0
+
+                    supermarket_level += 1
+                    
+                    waitForSpace()
+                    complete_popup.visible = False
+                    
+                    shopping_cart.clear()
+
+                    if supermarket_level == 3:
+                        print("You have completed all levels!")
+                        supermarket_level = 1
+
+                else:
+                    print("You Lose!")
+
+                    failure_popup.visible = True
+                    failure_popup.draw(screen)
+                    pygame.display.flip()
+
+                    waitForSpace()
+                    
+                    failure_popup.visible = False
+                    shopping_cart.clear()
+
+        text = itemFont.render(cart, True, (0, 0, 0))   
         text_rect = text.get_rect(topleft=cartList.topleft)
         screen.blit(text, text_rect)
         
@@ -137,21 +189,26 @@ while running:
         state, resetPos = exitAisles(state, events)
 
     if state == "bread-aisle":
-        breadAisle(screen, bg_bread, font, pygame.mouse.get_pos(), check_click(events))
+        addeditems = breadAisle(screen, bg_bread, font, pygame.mouse.get_pos(), check_click(events))
+        shopping_cart.extend(addeditems)
         state, resetPos = exitAisles(state, events)
 
     if state == "fruit-aisle":
-        fruitAisle(screen, bg_fruit, font, pygame.mouse.get_pos(), check_click(events))
+        addeditems = fruitAisle(screen, bg_fruit, font, pygame.mouse.get_pos(), check_click(events))
+        shopping_cart.extend(addeditems)
         state, resetPos = exitAisles(state, events)
 
     if state == "cleaning-aisle":
-        cleaningAisle(screen, bg_cleaning, font, pygame.mouse.get_pos(), check_click(events))
+        addeditems = cleaningAisle(screen, bg_cleaning, font, pygame.mouse.get_pos(), check_click(events))
+        shopping_cart.extend(addeditems)
         state, resetPos = exitAisles(state, events)
 
     if state == "vegetables-aisle":
-        vegetablesAisle(screen, bg_vegetables, font, pygame.mouse.get_pos(), check_click(events))
+        addeditems = vegetablesAisle(screen, bg_vegetables, font, pygame.mouse.get_pos(), check_click(events))
+        shopping_cart.extend(addeditems)
         state, resetPos = exitAisles(state, events)
 
     if state == "meat-aisle":
-        meatAisle(screen, bg_meat, font, pygame.mouse.get_pos(), check_click(events))
+        addeditems = meatAisle(screen, bg_meat, font, pygame.mouse.get_pos(), check_click(events))
+        shopping_cart.extend(addeditems)
         state, resetPos = exitAisles(state, events)
