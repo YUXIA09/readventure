@@ -21,7 +21,8 @@ with you later.
 
 '''
 
-itemsLevel3 = ["Chocolate Milk", "Bagels", "Cheese", "Detergent"]
+#itemsLevel3 = ["Chocolate Milk", "Bagels", "Cheese", "Detergent"]
+itemsLevel3 = []
 
 def level3(screen, font):
     text_surface = font.render(text, True, (255, 255, 255))

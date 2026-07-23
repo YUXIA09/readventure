@@ -33,6 +33,8 @@ sprites.add(mainPlayer)
 complete_popup = popup(supermarket_complete_popup)
 failure_popup = popup(supermarket_failure_popup)
 
+supermarket_level = 1
+
 def check_click(events):
     click = False
     for event in events:
@@ -56,6 +58,38 @@ def waitForSpace():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     waiting = False
+
+def endGame(Win):
+    global supermarket_level
+    if Win:
+        print("You Win!")
+        
+        complete_popup.visible = True
+        complete_popup.draw(screen)
+        pygame.display.flip()
+        
+        supermarket_level += 1
+                            
+        waitForSpace()
+        complete_popup.visible = False
+                            
+        shopping_cart.clear()
+        
+        if supermarket_level == 4:
+            print("You have completed all levels!")
+            supermarket_level = 1
+    
+    else:
+        print("You Lose!")
+    
+        failure_popup.visible = True
+        failure_popup.draw(screen)
+        pygame.display.flip()
+    
+        waitForSpace()
+    
+        failure_popup.visible = False
+        shopping_cart.clear()
 
 while running:
     pygame.display.flip()
@@ -121,39 +155,21 @@ while running:
             screen.blit(text, text_rect)
 
             if cashierRect.collidepoint(pygame.mouse.get_pos()) and check_click(events):
-                if check_items(shopping_cart):
-                    print("You Win!")
-
-                    complete_popup.visible = True
-                    complete_popup.draw(screen)
-                    pygame.display.flip()
-
-                    if supermarket_level == 3:
-                        print("You have completed all levels!")
-                        supermarket_level = 0
-
-                    supermarket_level += 1
-                    
-                    waitForSpace()
-                    complete_popup.visible = False
-                    
-                    shopping_cart.clear()
-
-                    if supermarket_level == 3:
-                        print("You have completed all levels!")
-                        supermarket_level = 1
-
-                else:
-                    print("You Lose!")
-
-                    failure_popup.visible = True
-                    failure_popup.draw(screen)
-                    pygame.display.flip()
-
-                    waitForSpace()
-                    
-                    failure_popup.visible = False
-                    shopping_cart.clear()
+                if supermarket_level == 1:
+                    if check_items(shopping_cart, itemsLevel1):
+                        endGame(True)
+                    else:
+                        endGame(False)
+                elif supermarket_level == 2:
+                    if check_items(shopping_cart, itemsLevel2):
+                        endGame(True)
+                    else:
+                        endGame(False)
+                elif supermarket_level == 3:
+                    if check_items(shopping_cart, itemsLevel3):
+                        endGame(True)
+                    else:
+                        endGame(False)
 
         text = itemFont.render(cart, True, (0, 0, 0))   
         text_rect = text.get_rect(topleft=cartList.topleft)

@@ -16,7 +16,9 @@ for your brother.
 Thanks a lot! 
 You're the best'''
 
-itemsLevel2 = ["Milk", "Bread Loafs", "Eggs", "Red Apples"]
+#itemsLevel2 = ["Milk", "Bread Loafs", "Eggs", "Red Apples"]
+itemsLevel2 = []
+
 
 def level2(screen, font):
     text_surface = font.render(text, True, (255, 255, 255))

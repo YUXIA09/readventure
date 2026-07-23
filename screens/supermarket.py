@@ -20,8 +20,8 @@ def play(screen, bg_supermarket, sprites, font, level):
     elif level == 3:
         level3(screen, small_font)
 
-def check_items(shopping_cart):
-    for item in itemsLevel1:
+def check_items(shopping_cart, itemsLevel):
+    for item in itemsLevel:
         if item not in shopping_cart:
             return False
     return True

@@ -3,7 +3,7 @@ import pygame
 supermarket = pygame.Rect(320, 100, 110, 70)
 supermarketBounds = pygame.Rect(175, 100, 610, 480)
 
-cartList = pygame.Rect(10, 450, 160, 140)
+cartList = pygame.Rect(10, 350, 160, 240)
 
 dairy = pygame.Rect(185, 200, 240, 60)
 bread = pygame.Rect(500, 200, 240, 60)
