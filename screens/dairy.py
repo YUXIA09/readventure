@@ -16,8 +16,3 @@ def dairyAisle(screen, bg_dairy, font, pos, click):
 
     return added_items
             
-                
-
-                
-        
-

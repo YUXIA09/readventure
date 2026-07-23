@@ -16,8 +16,8 @@ for your brother.
 Thanks a lot! 
 You're the best'''
 
-#itemsLevel2 = ["Milk", "Bread Loafs", "Eggs", "Red Apples"]
-itemsLevel2 = []
+itemsLevel2 = ["Milk", "Bread Loafs", "Eggs", "Red Apples"]
+#itemsLevel2 = []
 
 
 def level2(screen, font):

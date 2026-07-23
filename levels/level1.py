@@ -1,7 +1,7 @@
 text = "Shopping List:\nMilk\nBread Loafs\nEggs\nRedApples\nChicken"
 
-#itemsLevel1 = ["Milk", "Bread Loafs", "Eggs", "Red Apples", "Chicken"]
-itemsLevel1 = []
+itemsLevel1 = ["Milk", "Bread Loafs", "Eggs", "Red Apples", "Chicken"]
+#itemsLevel1 = []
 
 def level1(screen, font):
     text_surface = font.render(text, True, (255, 255, 255))
