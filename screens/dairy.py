@@ -3,7 +3,7 @@ from settings import WIDTH, HEIGHT
 import pygame
 import time
 
-
+#Code is really similar to other aisles, check bread.py for explanations.
 def dairyAisle(screen, bg_dairy, font, pos, click):
     screen.blit(bg_dairy, (0, 0))
 

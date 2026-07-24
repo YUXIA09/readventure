@@ -3,7 +3,7 @@ from settings import WIDTH, HEIGHT
 import pygame
 import time
 
-
+#Code is really similar to other aisles, check bread.py for explanations.
 def meatAisle(screen, bg_meat, font, pos, click):
     screen.blit(bg_meat, (0, 0))
 

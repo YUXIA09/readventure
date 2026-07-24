@@ -21,6 +21,7 @@ with you later.
 
 '''
 
+#Code for each level is basically the same. Read level1 for exlanation.
 itemsLevel3 = ["Chocolate Milk", "Bagels", "Cheese", "Detergent"]
 #itemsLevel3 = []
 

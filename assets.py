@@ -1,3 +1,4 @@
+#Load all assets for the game. Scale where appropiate
 import pygame 
 
 from settings import WIDTH, HEIGHT

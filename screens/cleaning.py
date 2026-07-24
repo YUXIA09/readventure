@@ -3,6 +3,7 @@ from settings import WIDTH, HEIGHT
 import pygame
 import time
 
+#Code is really similar to other aisles, check bread.py for explanations.
 def cleaningAisle(screen, bg_cleaning, font, pos, click):
     screen.blit(bg_cleaning, (0, 0))
 

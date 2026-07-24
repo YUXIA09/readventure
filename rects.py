@@ -1,10 +1,15 @@
 import pygame
 
+#Set supermarket icon rect in main screen
 supermarket = pygame.Rect(320, 100, 110, 70)
+
+#Set supermarket bounds rect in supermarket
 supermarketBounds = pygame.Rect(175, 100, 610, 480)
 
+#Set rect where the shopping cart list will be displayed in supermarket
 cartList = pygame.Rect(10, 350, 160, 240)
 
+#Set rects for each aisle in supermarket
 dairy = pygame.Rect(185, 200, 240, 60)
 bread = pygame.Rect(500, 200, 240, 60)
 
@@ -14,8 +19,10 @@ cleaning = pygame.Rect(500, 310, 240, 60)
 vegetables = pygame.Rect(185, 430, 240, 60)
 meat = pygame.Rect(500, 430, 240, 60)
 
+#Set rect in which the player can interact with the cashier in supermarket
 cashierRect = pygame.Rect(320, 60, 170, 90)
 
+#Set rects for each item in the dairy aisle
 milk = pygame.Rect(40, 120, 260, 150)
 chocolate_milk = pygame.Rect(305, 130, 135, 140)
 yogurt = pygame.Rect(445, 130, 100, 140)
@@ -24,6 +31,7 @@ blueberry_yogurt = pygame.Rect(670, 130, 100, 140)
 butter = pygame.Rect(40, 350, 320, 140)
 cheese = pygame.Rect(370, 350, 400, 140)
 
+#Set dictionary for each item in the dairy aisle
 dairyAisleItems = {
                     "Milk": milk,
                     "Chocolate Milk": chocolate_milk, 
@@ -34,6 +42,7 @@ dairyAisleItems = {
                     "Cheese": cheese
                    }
 
+#Set rects for each item in the bread aisle
 bread_loafs = pygame.Rect(40, 120, 200, 140)
 bread_buns = pygame.Rect(250, 120, 100, 140)
 baguette = pygame.Rect(365, 100, 130, 160)
@@ -42,6 +51,7 @@ bagels = pygame.Rect(640, 140, 120, 110)
 flour = pygame.Rect(40, 335, 490, 125)
 eggs = pygame.Rect(540, 335, 210, 135)
 
+#Set dictionary for each item in the bread aisle
 breadAisleItems = {
     "Bread Loafs": bread_loafs,
     "Bread Buns": bread_buns,
@@ -52,6 +62,7 @@ breadAisleItems = {
     "Eggs": eggs,
                    }
 
+#Set rects for each item in the fruit aisle
 bananas = pygame.Rect(30, 130, 125, 140)
 oranges = pygame.Rect(165, 140, 95, 130)
 red_apples = pygame.Rect(270, 140, 90, 130)
@@ -67,6 +78,7 @@ pears = pygame.Rect(425, 360, 110, 110)
 kiwis = pygame.Rect(550, 360, 65, 110)
 pineapples = pygame.Rect(630, 330, 130, 140)
 
+#Set dictionary for each item in the fruit aisle
 fruitAisleItems = {
     "Bananas": bananas,
     "Oranges": oranges,
@@ -84,6 +96,7 @@ fruitAisleItems = {
     "Pineapples": pineapples
 }
 
+#Set rects for each item in the cleaning aisle
 detergent = pygame.Rect(40, 140, 170, 130)
 window_cleaner = pygame.Rect(225, 140, 130, 130)
 fabric_softener = pygame.Rect(370, 140, 120, 130)
@@ -94,6 +107,7 @@ disinfecting_wipes = pygame.Rect(367, 330, 135, 150)
 soap = pygame.Rect(510, 380, 130, 100)
 sponges = pygame.Rect(655, 415, 112, 65)
 
+#Set dictionary for each item in the cleaning aisle
 cleaningAisleItems = {
     "Detergent": detergent,
     "Window Cleaner": window_cleaner,
@@ -106,6 +120,7 @@ cleaningAisleItems = {
     "Sponges": sponges
 }
 
+#Set rects for each item in the vegetables aisle
 carrots = pygame.Rect(40, 130, 140, 140)
 onions = pygame.Rect(190, 130, 110, 140)
 potatoes = pygame.Rect(315, 130, 100, 140)
@@ -119,6 +134,7 @@ broccoli = pygame.Rect(395, 335, 115, 140)
 garlic = pygame.Rect(525, 335, 95, 140)
 spinach = pygame.Rect(635, 335, 125, 140)
 
+#Set dictionary for each item in the vegetables aisle
 vegetablesAisleItems = {
     "Carrots": carrots,
     "Onions": onions,
@@ -134,6 +150,7 @@ vegetablesAisleItems = {
     "Spinach": spinach
 }
 
+#Set rects for each item in the meat aisle
 chicken = pygame.Rect(40, 120, 170, 120)
 steak = pygame.Rect(220, 120, 200, 120)
 ground_beef = pygame.Rect(440, 120, 190, 120)
@@ -143,6 +160,7 @@ pork_belly = pygame.Rect(240, 330, 195, 140)
 sausages = pygame.Rect(450, 330, 120, 140)
 bacon = pygame.Rect(580, 330, 190, 140)
 
+#Set dictionary for each item in the meat aisle
 meatAisleItems = {
     "Chicken": chicken,
     "Steak": steak,
